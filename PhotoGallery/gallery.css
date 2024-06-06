@@ -1,0 +1,162 @@
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+.image1{
+    background-image: url('./images/image1.jpeg');
+}
+.image2{
+    background-image: url('./images/image2.jpeg');
+}
+.image3{
+    background-image: url('./images/image3.jpeg');
+}
+.image4{
+    background-image: url('./images/image4.jpeg');
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 65px 0;
+    gap: 2px;
+    flex-wrap: wrap;
+}
+
+.card {
+     position: relative;
+    overflow: hidden;
+    width: 290px;
+    height: 590px;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 100%;
+    background-size: cover;
+    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+    filter: brightness(100%);
+    z-index: 1;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 0.5s ease, filter 0.5s ease;
+    z-index: 2;
+    opacity: 0;
+    
+    pointer-events: none;
+}
+.card:hover::before {
+    background: rgba(0, 0, 0, 0.834);
+    filter: grayscale(30%) ;
+    backdrop-filter: blur(8px);
+    opacity: 1;
+    
+}
+
+.card:hover .info .more {
+    visibility: visible;
+    color: rgb(102, 195, 231);
+    opacity: 1;
+    transform: translateY(-30px);
+    transition:  opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card:hover .info .name{
+      filter: hue-rotate(0deg) brightness(100%);
+      transform: translateY(-40px) scaleY(2);
+      transition: transform 0.5s ease, filter 0.5s ease;
+}
+.card:hover .info .location{
+    transform: translateY(-40px);
+}
+.info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    padding: 10px;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2; 
+    opacity: 1; 
+    margin-left: 10px;
+    filter: brightness(100%); 
+}
+.info .name {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-left: 30px;
+    transform: scaleY(2); 
+    transition: transform 0.5s ease, filter 0.5s ease;
+    
+  }
+
+.info .location {
+    font-family: 'Arial';
+    color: rgb(173, 170, 168);
+    font-size: 13px;
+    font-weight: 400;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 5%;
+    transition: transform 0.5s ease;
+}
+
+
+.info .more {
+    visibility: hidden;
+    color: rgb(102, 195, 231);
+    font-weight: bold;
+    margin-left: 30px;
+        
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .card {
+        flex: 1 1 calc(33.333% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 20px);
+    }
+
+    .info {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 calc(100% - 20px);
+    }
+
+    .info {
+        display: block;
+    }
+}
+
+/* Smartwatch media query */
+@media (max-width: 320px) {
+    .info {
+        display: block;
+    }
+}
